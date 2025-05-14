@@ -1,11 +1,18 @@
 const BASE_DOMAIN = "junk.artem-kim.hackclub.app";
 
 let submissionStatus = "Approved";
+let mealChoice = "Any";
 fetchData();
 
 document.getElementById("status").addEventListener("change", () => {
   submissionStatus = document.getElementById("status").value;
   console.log(submissionStatus);
+  fetchData();
+});
+
+document.getElementById("meal").addEventListener("change", () => {
+  mealChoice = document.getElementById("meal").value;
+  console.log(mealChoice);
   fetchData();
 });
 
@@ -24,10 +31,13 @@ function getLabel() {
 async function fetchData() {
   const params = new URLSearchParams();
   params.append("status", submissionStatus);
+  params.append("meal", mealChoice);
   const response = await fetch(
     `https://${BASE_DOMAIN}/api/submissions?${params}`
   );
   const submissions = await response.json();
+
+  console.log(submissions);
 
   let submissionsPush = "";
   submissions.submissions.forEach((submission) => {
@@ -41,7 +51,7 @@ async function fetchData() {
             Made by ${submission.firstName} ${submission.lastName}
           </p>
           <p class="text-mg text-white mt-1">
-            Basic Meal
+            ${submission.mealChoice}
           </p>
           <div class="flex gap-x-2 mt-2 mb-4">
             <a href="${submission.demo}" target="_blank"
