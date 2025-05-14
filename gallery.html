@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
+  <title>Grub - Gallery</title>
+</head>
+
+<body class="font-[Delius] text-white">
+  <a href="https://hackclub.com/">
+    <img class="absolute top-0 left-[10px] border-0 md:w-[200px] w-[128px] z-[999] sm:visible invisible"
+      src="https://assets.hackclub.com/flag-orpheus-top.svg" alt="Hack Club" />
+  </a>
+
+  <div class="absolute w-full z-100 bg-transparent px-8 py-6">
+    <div class="container mx-auto">
+      <div class="text-lg flex md:justify-end justify-center gap-6">
+        <a class="hover:text-yellow-200" href="index.html">Back to main page</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-gradient-to-br from-red-600 via-red-500 to-red-700 shadow-inner pb-16 min-h-screen">
+    <div class="container mx-auto px-4 pt-26">
+      <h2 class="md:text-5xl text-4xl font-bold text-center mb-6">Gallery</h2>
+      <p class="text-xl text-center mx-auto mb-8">Check out created websites and track your submission!</p>
+      <div class="flex justify-center gap-x-6">
+        <div class="w-48">
+          <label for="status" class="mb-2 text-center block">Status</label>
+          <select id="status"
+            class="bg-red-800 block w-full border border-red-600 text-white p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-300">
+            <option value="Approved">Approved</option>
+            <option value="Pending">Pending</option>
+            <option value="Needs Changes">Needs Changes</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+        </div>
+
+        <div class="w-48">
+          <label for="status" class="mb-2 text-center block">Meal Type</label>
+          <select id="status"
+            class="bg-red-800 block w-full border border-red-600 text-white p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-300">
+            <option value="approved">Any</option>
+            <option value="pending">Basic Meal</option>
+            <option value="needs_changes">Refreshment Combo</option>
+            <option value="rejected">Full Combo Meal</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="submissions" class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-12">
+        
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-red-700 py-4">
+    <div class="container mx-auto flex flex-col items-center">
+      <p class="text-md">
+        Made with ❤️ by Artem for Hack Club!
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
