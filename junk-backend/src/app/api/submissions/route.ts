@@ -9,12 +9,38 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "Invalid status" }, { status: 400 });
   }
 
-  // const features = searchParams.get('features') || "any";
+  const meal = searchParams.get("meal") || "Any";
+  if (
+    ![
+      "Any",
+      "Basic Meal ($6)",
+      "Refreshment Combo ($8)",
+      "Full Combo Meal ($10)",
+    ].includes(meal)
+  ) {
+    return NextResponse.json({ error: "Invalid meal choice" }, { status: 400 });
+  }
+
+  let filterByFormula = `{Status} = "${status}"`;
+  if (meal !== "Any") {
+    // This is the correct syntax for Airtable's formula language
+    filterByFormula = `AND({Status} = "${status}", {Meal Choice} = "${meal}")`;
+  }
+
+  console.log(filterByFormula);
 
   const query = await submissionsTable
     .select({
-      fields: ["Code URL", "First Name", "Last Name", "Screenshot", "Status", "Playable URL"],
-      filterByFormula: `{Status} = "${status}"`,
+      fields: [
+        "Code URL",
+        "First Name",
+        "Last Name",
+        "Screenshot",
+        "Status",
+        "Playable URL",
+        "Meal Choice",
+      ],
+      filterByFormula: filterByFormula,
     })
     .all();
   console.log(query);
@@ -35,7 +61,8 @@ export async function GET(request: Request) {
       screenshot: screenshotUrl,
       status: record.get("Status"),
       demo: record.get("Playable URL"),
-      date: date
+      mealChoice: record.get("Meal Choice"),
+      date: date,
     };
   });
 
