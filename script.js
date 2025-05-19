@@ -44,7 +44,7 @@ async function fetchData() {
     const date = new Date(submission.date);
     submissionsPush += `<div class="py-6 px-8 bg-red-700 rounded-xl shadow-lg">
           <a href="${submission.demo}" target="_blank"
-            class="block cursor-pointer mb-4 h-48 rounded-xl bg-cover bg-center transition-transform duration-300 ease-in-out shadow-xl hover:scale-110 bg-[url(${
+            class="block cursor-pointer mb-4 h-48 rounded-xl bg-cover bg-center shadow-xl bg-[url(${
               submission.screenshot
             })]">
           </a>
