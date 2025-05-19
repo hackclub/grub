@@ -21,7 +21,7 @@ function getLabel() {
     return '<span class="px-2 py-1 text-sm bg-green-500 rounded-xl">Approved</span>';
   } else if (submissionStatus === "Pending") {
     return '<span class="px-2 py-1 text-sm bg-yellow-500 rounded-xl">Pending</span>';
-  } else if(submissionStatus === "Rejected") {
+  } else if (submissionStatus === "Rejected") {
     return '<span class="px-2 py-1 text-sm bg-red-500 rounded-xl">Rejected</span>';
   } else if (submissionStatus === "Needs Changes") {
     return '<span class="px-2 py-1 text-sm bg-orange-500 rounded-xl">Needs Changes</span>';
@@ -43,9 +43,11 @@ async function fetchData() {
   submissions.submissions.forEach((submission) => {
     const date = new Date(submission.date);
     submissionsPush += `<div class="py-6 px-8 bg-red-700 rounded-xl shadow-lg">
-          <div
-            class="mb-4 h-48 rounded-xl bg-cover bg-center transition-transform duration-300 ease-in-out hover:scale-110 bg-[url(${submission.screenshot})]">
-          </div>
+          <a href="${submission.demo}" target="_blank"
+            class="block cursor-pointer mb-4 h-48 rounded-xl bg-cover bg-center transition-transform duration-300 ease-in-out shadow-xl hover:scale-110 bg-[url(${
+              submission.screenshot
+            })]">
+          </a>
           ${getLabel()}
           <p class="text-lg text-white mt-2">
             Made by ${submission.firstName} ${submission.lastName}
@@ -73,12 +75,15 @@ async function fetchData() {
             </a>
           </div>
 
-          <p class="text-sm border-t border-yellow-300 pt-4">Submitted on ${date.toLocaleDateString("en-US")}</p>
+          <p class="text-sm border-t border-yellow-300 pt-4">Submitted on ${date.toLocaleDateString(
+            "en-US"
+          )}</p>
         </div>`;
   });
 
   if (submissionsPush === "") {
-    document.getElementById("submissions").innerHTML = "<h1 class='text-2xl text-white'>No submissions found</h1>";
+    document.getElementById("submissions").innerHTML =
+      "<h1 class='text-2xl text-white'>No submissions found</h1>";
   } else {
     document.getElementById("submissions").innerHTML = submissionsPush;
   }
