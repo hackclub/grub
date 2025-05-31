@@ -23,7 +23,6 @@ export async function GET(request: Request) {
 
   let filterByFormula = `{Status} = "${status}"`;
   if (meal !== "Any") {
-    // This is the correct syntax for Airtable's formula language
     filterByFormula = `AND({Status} = "${status}", {Meal Choice} = "${meal}")`;
   }
 
