@@ -49,10 +49,7 @@ async function fetchData() {
             })]">
           </a>
           ${getLabel()}
-          <p class="text-lg text-white mt-2">
-            Made by ${submission.firstName} ${submission.lastName}
-          </p>
-          <p class="text-mg text-white mt-1">
+          <p class="text-mg text-white mt-2">
             ${submission.mealChoice}
           </p>
           <div class="flex gap-x-2 mt-2 mb-4">

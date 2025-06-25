@@ -32,8 +32,6 @@ export async function GET(request: Request) {
     .select({
       fields: [
         "Code URL",
-        "First Name",
-        "Last Name",
         "Screenshot",
         "Status",
         "Playable URL",
@@ -55,8 +53,6 @@ export async function GET(request: Request) {
     return {
       id: record.id,
       codeUrl: record.get("Code URL"),
-      firstName: record.get("First Name"),
-      lastName: record.get("Last Name"),
       screenshot: screenshotUrl,
       status: record.get("Status"),
       demo: record.get("Playable URL"),
